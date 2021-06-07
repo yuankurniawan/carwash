@@ -7,6 +7,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import OrderFinish from './screens/OrderFinish';
+import SplashScreen from './screens/SplashScreen';
+import OnBoarding1 from './screens/OnBoarding1';
+import OnBoarding2 from './screens/OnBoarding2';
+import OnBoarding3 from './screens/OnBoarding3';
+
+import LoginScreen from './screens/LoginScreen';
+import RegisScreen from './screens/RegisScreen';
 
 const Stack = createStackNavigator();
 
@@ -14,13 +21,33 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="Splash" component={SplashScreen} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="Boarding1" component={OnBoarding1} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="Boarding2" component={OnBoarding2} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="Boarding3" component={OnBoarding3} options={{
+            headerShown: false
+          }}/>
+
+      <Stack.Screen name="Login" component={LoginScreen} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="Regis" component={RegisScreen} options={{
+            headerShown: false
+          }}/>
+
       <Stack.Screen name="OrderFinish" component={OrderFinish} options={{
             headerShown: false,
           }}/>
       <Stack.Screen name="Chat" component={ChatScreen} options={{
             headerShown: false,
           }}/>
-        <Stack.Screen name="Home" component={HomeScreen} options={{
+      <Stack.Screen name="Home" component={HomeScreen} options={{
             headerShown: false,
           }}/>
         
