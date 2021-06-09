@@ -2,26 +2,31 @@ import React from 'react';
 import {View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
+const { height: HEIGHT } = Dimensions.get('window')
 
-export default class RegisScreen extends React.Component{
+export default class OtpScreen extends React.Component{
     render() {
         return(
             <View style={styles.container}>
-                <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
-                    <Text style={styles.text}>Daftar</Text>
-                    <Text style={styles.tulisan}>Nomor Telepon</Text>
+                <ImageBackground source={require('../images/LoginScreen.png')} style={[styles.image, {width: WIDTH, height: HEIGHT}]}>
+                    <Text style={styles.text}>Verifikasi OTP</Text>
+                    <Text style={styles.tulisan}>Masukkan Kode OTP</Text>
 
                     <TextInput
                     style={styles.input}
-                    placeholder= "ex: 089809878989"
+                    placeholder= "****"
                     underlineColorAndroid='transparent'
                     />
 
-                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Otp')}}>
-                    <Text style={styles.text1}>Selanjutnya</Text>
-                </TouchableOpacity>
-                <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
-                <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('Login')}}>Login</Text>
+                    <Text style={styles.tulisan1}>Belum menerima kode OTP? </Text>
+                    <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('')}}>Kirim Ulang</Text>
+
+                    <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('DataDiri')}}>
+                        <Text style={styles.text1}>Verifikasi</Text>
+                    </TouchableOpacity>
+
+                
+
                 </ImageBackground>
             </View>
         )
@@ -37,7 +42,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        width : 410, height: 650,
         alignItems: 'center',
     },
     text: {
@@ -46,6 +50,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         top: 120,
+        
     },
     input: {
         width: WIDTH-80,
@@ -53,7 +58,6 @@ const styles = StyleSheet.create({
         borderRadius : 5,
         padding: 16,
         top: 240,
-        borderColor : '#ccc',
         marginHorizontal: 10,
         backgroundColor: '#C6C2C6',
         opacity: 0.5,
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontSize: 20,
         top: 220,
-        right: 95,
+        right: WIDTH-340,
     },
     btn:{
         width: WIDTH-80,
@@ -83,12 +87,14 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 14,
         marginTop: 10,
-        top: 360,
+        top: HEIGHT-438,
+        right: WIDTH-340,
     },
     tulisan2: {
         fontFamily: 'Roboto',
         fontSize: 14,
-        top: 360,
+        top: HEIGHT-457,
+        right: WIDTH-470,
         fontWeight: "bold",
         color: '#00A7E1',
     },

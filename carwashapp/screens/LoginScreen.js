@@ -2,12 +2,13 @@ import React from 'react';
 import {View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
+const { height: HEIGHT } = Dimensions.get('window')
 
 export default class LoginScreen extends React.Component{
     render() {
         return(
             <View style={styles.container}>
-                <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
+                <ImageBackground source={require('../images/LoginScreen.png')} style={[styles.image, {width: WIDTH, height: HEIGHT}]}>
                     <Text style={styles.text}>Login</Text>
                     <Text style={styles.tulisan}>Nomor Telepon</Text>
 
@@ -17,7 +18,7 @@ export default class LoginScreen extends React.Component{
                     underlineColorAndroid='transparent'
                     />
 
-                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('')}}>
+                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Otp')}}>
                     <Text style={styles.text1}>Login</Text>
                 </TouchableOpacity>
 
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        width : 410, height: 650,
         alignItems: 'center',
     },
     text: {

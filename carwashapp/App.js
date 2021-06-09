@@ -14,6 +14,9 @@ import OnBoarding3 from './screens/OnBoarding3';
 
 import LoginScreen from './screens/LoginScreen';
 import RegisScreen from './screens/RegisScreen';
+import OtpScreen from './screens/OtpScreen';
+import DataDiri from './screens/DataDiri';
+import DoneRegisScreen from './screens/DoneRegisScreen';
 
 const Stack = createStackNavigator();
 
@@ -34,12 +37,21 @@ export default function App() {
               headerShown: false
             }}/>
 
-        <Stack.Screen name="Login" component={LoginScreen} options={{
-              headerShown: false
-            }}/>
-        <Stack.Screen name="Regis" component={RegisScreen} options={{
-              headerShown: false
-            }}/>
+      <Stack.Screen name="Login" component={LoginScreen} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="Regis" component={RegisScreen} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="Otp" component={OtpScreen} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="DataDiri" component={DataDiri} options={{
+            headerShown: false
+          }}/>
+      <Stack.Screen name="DoneRegis" component={DoneRegisScreen} options={{
+            headerShown: false
+          }}/>
 
         <Stack.Screen name="OrderFinish" component={OrderFinish} options={{
               headerShown: false,
