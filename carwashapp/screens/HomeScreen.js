@@ -1,8 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import { SafeAreaView, Text, View, StyleSheet, Button } from 'react-native';
 import MapView from 'react-native-maps';
-=======
 import { SafeAreaView, Text, View, StyleSheet, FlatList, Pressable, Button, PermissionsAndroid } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -28,7 +26,6 @@ const List = [
         price: '50000'
     }
 ]
->>>>>>> bde3ddbefe937258f93c6c8d2568c8b326bf5552
 
 export default class HomeScreen extends React.Component {
     constructor(props) {
