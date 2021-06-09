@@ -21,36 +21,35 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Splash" component={SplashScreen} options={{
-            headerShown: false
-          }}/>
-      <Stack.Screen name="Boarding1" component={OnBoarding1} options={{
-            headerShown: false
-          }}/>
-      <Stack.Screen name="Boarding2" component={OnBoarding2} options={{
-            headerShown: false
-          }}/>
-      <Stack.Screen name="Boarding3" component={OnBoarding3} options={{
-            headerShown: false
-          }}/>
+        <Stack.Screen name="Splash" component={SplashScreen} options={{
+              headerShown: false
+            }}/>
+        <Stack.Screen name="Boarding1" component={OnBoarding1} options={{
+              headerShown: false
+            }}/>
+        <Stack.Screen name="Boarding2" component={OnBoarding2} options={{
+              headerShown: false
+            }}/>
+        <Stack.Screen name="Boarding3" component={OnBoarding3} options={{
+              headerShown: false
+            }}/>
 
-      <Stack.Screen name="Login" component={LoginScreen} options={{
-            headerShown: false
-          }}/>
-      <Stack.Screen name="Regis" component={RegisScreen} options={{
-            headerShown: false
-          }}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{
+              headerShown: false
+            }}/>
+        <Stack.Screen name="Regis" component={RegisScreen} options={{
+              headerShown: false
+            }}/>
 
-      <Stack.Screen name="OrderFinish" component={OrderFinish} options={{
-            headerShown: false,
-          }}/>
-      <Stack.Screen name="Chat" component={ChatScreen} options={{
-            headerShown: false,
-          }}/>
-      <Stack.Screen name="Home" component={HomeScreen} options={{
-            headerShown: false,
-          }}/>
-        
+        <Stack.Screen name="OrderFinish" component={OrderFinish} options={{
+              headerShown: false,
+            }}/>
+        <Stack.Screen name="Chat" component={ChatScreen} options={{
+              headerShown: false,
+            }}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={{
+              headerShown: false,
+            }}/>
       </Stack.Navigator>
     </NavigationContainer> 
   );
