@@ -18,6 +18,8 @@ import OtpScreen from './screens/OtpScreen';
 import DataDiri from './screens/DataDiri';
 import DoneRegisScreen from './screens/DoneRegisScreen';
 
+import OrderDetail from './screens/OrderDetail';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -62,6 +64,9 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{
               headerShown: false,
             }}/>
+      <Stack.Screen name = "OrderDetail" component = {OrderDetail} options={{
+          headerShown: false,
+          }}/>
       </Stack.Navigator>
     </NavigationContainer> 
   );
