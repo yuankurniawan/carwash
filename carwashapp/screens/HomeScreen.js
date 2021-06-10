@@ -44,7 +44,20 @@ export default class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        Geolocation.getCurrentPosition(info => console.log(info));
+        Geolocation.getCurrentPosition(
+            info => {
+                const { coords } = info
+                this.setState({latitude:coords.latitude, longitude:coords.longitude})
+                console.log(info)
+    
+            },
+            error => console.log(error),
+            {
+                enableHighAccuracy: false,
+                timeout: 2000,
+                maximumAge: 3600000
+            }
+        )
     }
 
     render() {

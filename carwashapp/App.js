@@ -64,9 +64,6 @@ export default function App() {
         <Stack.Screen name="OrderFinish" component={OrderFinish} options={{
           headerShown: false,
         }} />
-        <Stack.Screen name="OrderDetail" component={OrderDetail} options={{
-          headerShown: false,
-        }} />
         <Stack.Screen name="Chat" component={ChatScreen} options={{
           headerShown: false,
         }} />
