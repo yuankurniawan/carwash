@@ -3,25 +3,26 @@ import { SafeAreaView, Text, View, StyleSheet, FlatList, Pressable, Button, Perm
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Geolocation from '@react-native-community/geolocation';
 
 const List = [
     {
         id: 1,
         name: 'Paket A',
         description: 'Cuci Luar',
-        price: '40000'
+        price: 40000
     },
     {
         id: 2,
         name: 'Paket B',
         description: 'Luar + Interior',
-        price: '60000'
+        price: 60000
     },
     {
         id: 3,
         name: 'Paket C',
         description: 'Paket Complete',
-        price: '50000'
+        price: 50000
     }
 ]
 
@@ -40,6 +41,10 @@ export default class HomeScreen extends React.Component {
             latitudeDelta: 0.007,
             longitudeDelta: 0.007
         };
+    }
+
+    componentDidMount() {
+        Geolocation.getCurrentPosition(info => console.log(info));
     }
 
     render() {
