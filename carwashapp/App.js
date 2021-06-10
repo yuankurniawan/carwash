@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './screens/HomeScreen';
+import Profile from './screens/ProfileScreen';
 import ChatScreen from './screens/ChatScreen';
 import OrderFinish from './screens/OrderFinish';
 import SplashScreen from './screens/SplashScreen';
@@ -19,6 +20,7 @@ import DataDiri from './screens/DataDiri';
 import DoneRegisScreen from './screens/DoneRegisScreen';
 
 import OrderDetail from './screens/OrderDetail';
+
 
 const Stack = createStackNavigator();
 
@@ -63,6 +65,9 @@ export default function App() {
             }}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{
               headerShown: false,
+            }}/>
+        <Stack.Screen name="Profile" component={Profile} options={{
+              headerShown: true,
             }}/>
       <Stack.Screen name = "OrderDetail" component = {OrderDetail} options={{
           headerShown: false,
