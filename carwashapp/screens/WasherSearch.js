@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 export default class WasherSearch extends React.Component {
+    componentDidMount(){
+        setTimeout(() => {
+            this.props.navigation.replace('WasherOnGoing');
+        }, 3000)
+    }
+
     render() {
         return(
             <View style={styles.root}>
@@ -42,7 +48,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     caption: {
-        marginLeft: 50,
+        paddingHorizontal: 50,
         fontWeight: 'normal',
     },
     base: {
