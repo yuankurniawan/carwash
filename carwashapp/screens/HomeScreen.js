@@ -1,6 +1,4 @@
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Button } from 'react-native';
-import MapView from 'react-native-maps';
 import { SafeAreaView, Text, View, StyleSheet, FlatList, Pressable, Button, PermissionsAndroid } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';

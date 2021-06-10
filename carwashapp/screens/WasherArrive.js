@@ -3,7 +3,13 @@ import { SafeAreaView, Text, View, StyleSheet, Button } from 'react-native';
 import MapView from 'react-native-maps';
 import { ScrollView } from 'react-native-gesture-handler';
 
-export default class WasherArrive extends React.Component {
+export default class WasherArrive extends React.Component {e
+    componentDidMount(){
+        setTimeout(() => {
+            this.props.navigation.replace('OrderFinish');
+        }, 3000)
+    }
+    
     render() {
         return(
             <View style={styles.root}>
@@ -22,7 +28,7 @@ export default class WasherArrive extends React.Component {
                 <View style={styles.chatButton}>
                 <Button 
                     title="Chat Washer"
-                    onPress={() => Alert.alert('Simple Button pressed')}
+                    onPress={() => {this.props.navigation.navigate('Chat')}}
                 />
                 </View>
                 <Text style={[styles.text,{fontSize: 20, marginTop: 20}]}>PAKET A</Text>
@@ -50,6 +56,7 @@ const styles = StyleSheet.create({
     },
     caption: {
         marginLeft: 50,
+        marginRight: 50,
         fontWeight: 'normal',
     },
     base: {

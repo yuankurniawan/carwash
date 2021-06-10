@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Button } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, Button, ScrollView } from 'react-native';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 
@@ -8,7 +8,7 @@ const profile = <Icon2 name="ios-person-circle-outline" size={120} color='#00A7E
 export default class OrderFinish extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
         <View style={{alignItems: 'center', marginTop: 50}}>
           {profile}
           <Text style={{fontSize: 30}}>Herman</Text>
@@ -38,7 +38,7 @@ export default class OrderFinish extends React.Component {
             accessibilityLabel="Learn more about this purple button"
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

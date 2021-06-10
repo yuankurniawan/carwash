@@ -4,6 +4,12 @@ import MapView from 'react-native-maps';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class WasherOnGoing extends React.Component {
+    componentDidMount(){
+        setTimeout(() => {
+            this.props.navigation.replace('WasherArrive');
+        }, 3000)
+    }
+
     render() {
         return(
             <View style={styles.root}>
@@ -50,6 +56,7 @@ const styles = StyleSheet.create({
     },
     caption: {
         marginLeft: 50,
+        marginRight: 50,
         fontWeight: 'normal',
     },
     base: {

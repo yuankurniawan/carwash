@@ -24,7 +24,7 @@ export default function ChatScreen() {
         },
       },
     ]);
-  }, []);
+  }, []); 
 
   const onSend = useCallback((messages = []) => {
     setMessages(previousMessages =>
