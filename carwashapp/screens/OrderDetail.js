@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import {SafeAreaView,Text,View, StyleSheet,Button, ScrollView} from 'react-native';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import {CheckBox} from 'react-native-elements';
+
 const profile = <Icon2 name= 'ios-person-circle-outline'size={70} color='#00A7E1'></Icon2>
 
 export default class OrderDetail extends React.Component {
@@ -11,6 +12,7 @@ export default class OrderDetail extends React.Component {
           count:0,
         }
       }
+      
   render() {
     return (
         <ScrollView>
@@ -83,16 +85,16 @@ export default class OrderDetail extends React.Component {
         </View>
         <View style={{borderBottomColor: '#cc', borderBottomWidth:0.5}}>
           <Text style={{fontSize: 20, fontWeight:'bold', marginTop: 10}}>
-            Paket A
+            {this.props.route.params.name}
           </Text>
           <Text style={{fontSize: 10, color:'grey'}}>
-            Cuci Luar
+            {this.props.route.params.description}
           </Text>
           <Text style={{fontSize: 20, fontWeight:'bold', color:'green'}}>
-            RP40.000,00
+            Rp {this.props.route.params.price},00
           </Text>
           <Text>
-            BSD City Kavling Edutown I.1 Jl. BSD Raya Utama, BSD Citu, Kec. Pagedangan, Tangerang, Banten 15339
+            {this.props.route.params.location}
           </Text>
         </View>
         <View style={{flexDirection:'row', justifyContent:'space-between'}}>

@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './screens/HomeScreen';
+import Profile from './screens/ProfileScreen';
 import ChatScreen from './screens/ChatScreen';
 import OrderFinish from './screens/OrderFinish';
 import SplashScreen from './screens/SplashScreen';
@@ -24,15 +25,13 @@ import WasherSearch from './screens/WasherSearch';
 
 import OrderDetail from './screens/OrderDetail';
 
+
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="WasherSearch" component={WasherSearch} options={{
-          headerShown: false,
-        }} />
         <Stack.Screen name="Splash" component={SplashScreen} options={{
           headerShown: false
         }} />
@@ -71,7 +70,7 @@ export default function App() {
         <Stack.Screen name="Chat" component={ChatScreen} options={{
           headerShown: false,
         }} />
-        
+
         <Stack.Screen name="WasherOnGoing" component={WasherOnGoing} options={{
           headerShown: false,
         }} />
@@ -79,6 +78,15 @@ export default function App() {
           headerShown: false,
         }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name="WasherSearch" component={WasherSearch} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name="Profile" component={Profile} options={{
+          headerShown: true,
+        }} />
+        <Stack.Screen name="OrderDetail" component={OrderDetail} options={{
           headerShown: false,
         }} />
 

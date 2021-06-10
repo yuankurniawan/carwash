@@ -46,12 +46,11 @@ export default class HomeScreen extends React.Component {
         return(
             <SafeAreaView style={[styles.container]}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    {/* on press profile */}
-                    <Pressable style={{ height: 55, backgroundColor: 'white', width: '15%', alignItems: 'center', justifyContent: 'center' }}>
+
+                    <Pressable style={{ height: 55, backgroundColor: 'white', width: '15%', alignItems: 'center', justifyContent: 'center' }} onPress={() => this.props.navigation.navigate('Profile')}>
                         <Ionicons name='md-person-circle-outline' size={50} color='#00A7E1'/>
                     </Pressable>
 
-                    {/* belum ada icon di text input */}
                     <GooglePlacesAutocomplete
                         placeholder='Mau Cuci Mobil Dimana Hari Ini?'
                         fetchDetails={true}
@@ -132,10 +131,7 @@ export default class HomeScreen extends React.Component {
 
                     <Button 
                         title='Pesan'
-                        /* on press order detail */
-                        /* const { location, name, description, price } = route.params; <-- ditambah di order detail */
-                        /* panggil data di text, {location}, {name} */
-                        onPress={() => this.props.navigation.navigate('', {
+                        onPress={() => this.props.navigation.navigate('OrderDetail', {
                             location: this.state.Data,
                             name: this.state.Name,
                             description: this.state.Description,
