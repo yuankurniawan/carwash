@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
+import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
 const { height: HEIGHT } = Dimensions.get('window')
@@ -7,10 +7,10 @@ const { height: HEIGHT } = Dimensions.get('window')
 export default class LoginScreen extends React.Component{
     render() {
         return(
-            <View style={styles.container}>
-                <ImageBackground source={require('../images/LoginScreen.png')} style={[styles.image, {width: WIDTH, height: HEIGHT}]}>
+            <SafeAreaView style={styles.container1}>
+                <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
                     <Text style={styles.text}>Login</Text>
-                    <Text style={styles.tulisan}>Nomor Telepon</Text>
+                    <Text style={styles.tulisan}>Email</Text>
 
                     <TextInput
                     style={styles.input}
@@ -18,7 +18,15 @@ export default class LoginScreen extends React.Component{
                     underlineColorAndroid='transparent'
                     />
 
-                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Otp')}}>
+                    <Text style={styles.tulisan3}>Password</Text>
+
+                    <TextInput
+                    style={styles.input1}
+                    placeholder= "ex: 089809878989"
+                    underlineColorAndroid='transparent'
+                    />
+
+                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Home')}}>
                     <Text style={styles.text1}>Login</Text>
                 </TouchableOpacity>
 
@@ -26,13 +34,16 @@ export default class LoginScreen extends React.Component{
                 <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('Regis')}}>Daftar sekarang</Text>
 
                 </ImageBackground>
-            </View>
+            </SafeAreaView>
         )
     };
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1
+      },
+    container1: {
         flex: 1,
         alignItems: 'center',
         flexDirection: 'column',
@@ -40,6 +51,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
+        width : 410, height: 650,
         alignItems: 'center',
     },
     text: {
@@ -54,7 +66,17 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius : 5,
         padding: 16,
-        top: 240,
+        top: 230,
+        marginHorizontal: 10,
+        backgroundColor: '#C6C2C6',
+        opacity: 0.5,
+    },
+    input1: {
+        width: WIDTH-80,
+        height: 50,
+        borderRadius : 5,
+        padding: 16,
+        top: 250,
         marginHorizontal: 10,
         backgroundColor: '#C6C2C6',
         opacity: 0.5,
@@ -64,7 +86,14 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontSize: 20,
         top: 220,
-        right: 95,
+        right: 140,
+    },
+    tulisan3: {
+        fontWeight: "bold",
+        textAlign: "left",
+        fontSize: 20,
+        top: 240,
+        right: 120,
     },
     btn:{
         width: WIDTH-80,
@@ -73,7 +102,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#00A7E1',
         alignItems: 'center',
-        top: 350,
+        top: 320,
     },
     text1:{
         color: '#FFFFFF',
@@ -84,12 +113,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 14,
         marginTop: 10,
-        top: 360,
+        top: 320,
     },
     tulisan2: {
         fontFamily: 'Roboto',
         fontSize: 14,
-        top: 360,
+        top: 320,
         fontWeight: "bold",
         color: '#00A7E1',
     },

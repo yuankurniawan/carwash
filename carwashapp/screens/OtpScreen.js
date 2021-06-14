@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
+import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
 const { height: HEIGHT } = Dimensions.get('window')
@@ -7,34 +7,45 @@ const { height: HEIGHT } = Dimensions.get('window')
 export default class OtpScreen extends React.Component{
     render() {
         return(
-            <View style={styles.container}>
-                <ImageBackground source={require('../images/LoginScreen.png')} style={[styles.image, {width: WIDTH, height: HEIGHT}]}>
-                    <Text style={styles.text}>Verifikasi OTP</Text>
-                    <Text style={styles.tulisan}>Masukkan Kode OTP</Text>
+            <SafeAreaView style={[styles.container]}>
+                <View style={styles.container1}>
+                    <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
+                        <Text style={styles.text}>Daftar</Text>
+                        <Text style={styles.tulisan}>New Password</Text>
 
-                    <TextInput
-                    style={styles.input}
-                    placeholder= "****"
-                    underlineColorAndroid='transparent'
-                    />
+                        <TextInput
+                        style={styles.input}
+                        placeholder= "******"
+                        underlineColorAndroid='transparent'
+                        />
 
-                    <Text style={styles.tulisan1}>Belum menerima kode OTP? </Text>
-                    <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('')}}>Kirim Ulang</Text>
+                        <Text style={styles.tulisan3}>Confirm New Password</Text>
 
-                    <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('DataDiri')}}>
-                        <Text style={styles.text1}>Verifikasi</Text>
-                    </TouchableOpacity>
+                        <TextInput
+                        style={styles.input1}
+                        placeholder= "******"
+                        underlineColorAndroid='transparent'
+                        />
+                        
 
-                
+                        <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('DataDiri')}}>
+                            <Text style={styles.text1}>Verifikasi</Text>
+                        </TouchableOpacity>
 
-                </ImageBackground>
-            </View>
+                    
+
+                    </ImageBackground>
+                </View>
+            </SafeAreaView>
         )
     };
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1
+    },
+    container1: {
         flex: 1,
         alignItems: 'center',
         flexDirection: 'column',
@@ -42,6 +53,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
+        width : 410, height: 650,
         alignItems: 'center',
     },
     text: {
@@ -62,12 +74,29 @@ const styles = StyleSheet.create({
         backgroundColor: '#C6C2C6',
         opacity: 0.5,
     },
+    input1: {
+        width: WIDTH-80,
+        height: 50,
+        borderRadius : 5,
+        padding: 16,
+        top: 250,
+        marginHorizontal: 10,
+        backgroundColor: '#C6C2C6',
+        opacity: 0.5,
+    },
+    tulisan3: {
+        fontWeight: "bold",
+        textAlign: "left",
+        fontSize: 20,
+        top: HEIGHT-440,
+        right: WIDTH-350,
+    },
     tulisan: {
         fontWeight: "bold",
         textAlign: "left",
         fontSize: 20,
-        top: 220,
-        right: WIDTH-340,
+        top: HEIGHT-450,
+        right: WIDTH-315,
     },
     btn:{
         width: WIDTH-80,

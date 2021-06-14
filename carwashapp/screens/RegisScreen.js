@@ -1,35 +1,40 @@
 import React from 'react';
-import {View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
+import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
 
 export default class RegisScreen extends React.Component{
     render() {
         return(
-            <View style={styles.container}>
-                <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
-                    <Text style={styles.text}>Daftar</Text>
-                    <Text style={styles.tulisan}>Nomor Telepon</Text>
+            <SafeAreaView style={[styles.container]}>
+                <View style={styles.container1}>
+                    <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
+                        <Text style={styles.text}>Daftar</Text>
+                        <Text style={styles.tulisan}>Email</Text>
 
-                    <TextInput
-                    style={styles.input}
-                    placeholder= "ex: 089809878989"
-                    underlineColorAndroid='transparent'
-                    />
+                        <TextInput
+                        style={styles.input}
+                        placeholder= "ex: carwash@gmail.com"
+                        underlineColorAndroid='transparent'
+                        />
 
-                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Otp')}}>
-                    <Text style={styles.text1}>Selanjutnya</Text>
-                </TouchableOpacity>
-                <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
-                <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('Login')}}>Login</Text>
-                </ImageBackground>
-            </View>
+                    <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Otp')}}>
+                        <Text style={styles.text1}>Selanjutnya</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
+                    <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('Login')}}>Login</Text>
+                    </ImageBackground>
+                </View>
+            </SafeAreaView>
         )
     };
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1
+      },
+    container1: {
         flex: 1,
         alignItems: 'center',
         flexDirection: 'column',
@@ -63,7 +68,7 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontSize: 20,
         top: 220,
-        right: 95,
+        right: 140,
     },
     btn:{
         width: WIDTH-80,

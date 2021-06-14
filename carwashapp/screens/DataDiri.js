@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
+import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
 const { height: HEIGHT } = Dimensions.get('window')
@@ -7,34 +7,39 @@ const { height: HEIGHT } = Dimensions.get('window')
 export default class DataDiri extends React.Component{
     render() {
         return(
-            <View style={styles.container}>
-                <Text style={styles.text}>Verifikasi OTP</Text>
-                <Text style={styles.tulisan}>Nama Pengguna</Text>
+            <SafeAreaView style={[styles.container]}>
+                <View style={styles.container1}>
+                    <Text style={styles.text}>Data Diri</Text>
+                    <Text style={styles.tulisan}>Nama Depan</Text>
 
-                <TextInput
-                style={styles.input1}
-                placeholder= "Nama Anda"
-                underlineColorAndroid='transparent'
-                />
+                    <TextInput
+                    style={styles.input1}
+                    placeholder= "Nama Depan"
+                    underlineColorAndroid='transparent'
+                    />
 
-                <Text style={styles.tulisan1}>Email</Text>
+                    <Text style={styles.tulisan1}>Nama Belakang</Text>
 
-                <TextInput
-                style={styles.input2}
-                placeholder= "example@gmail.com"
-                underlineColorAndroid='transparent'
-                />
+                    <TextInput
+                    style={styles.input2}
+                    placeholder= "Nama Belakang"
+                    underlineColorAndroid='transparent'
+                    />
 
-                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('DoneRegis')}}>
-                    <Text style={styles.text1}>Selesai</Text>
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('DoneRegis')}}>
+                        <Text style={styles.text1}>Selesai</Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
         )
     };
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1
+    },
+    container1: {
         flex: 1,
         alignItems: 'center',
         flexDirection: 'column',
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "left",
         top: HEIGHT-600,
-        right: WIDTH-360
+        right: WIDTH-315
         
     },
     input1: {
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontSize: 20,
         top: HEIGHT-560,
-        right: WIDTH-325,
+        right: WIDTH-310,
     },
     btn:{
         width: WIDTH-80,
@@ -99,7 +104,7 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontSize: 20,
         top: HEIGHT-540,
-        right: WIDTH-275,
+        right: WIDTH-320,
     },
     tulisan2: {
         fontFamily: 'Roboto',
