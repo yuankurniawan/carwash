@@ -1,10 +1,33 @@
 import React from 'react';
+import auth from '@react-native-firebase/auth';
 import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
+import { ThemeConsumer } from 'react-native-elements';
 
 const { width: WIDTH } = Dimensions.get('window')
 const { height: HEIGHT } = Dimensions.get('window')
 
 export default class LoginScreen extends React.Component{
+
+    constructor (props) {
+        super(props)
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+
+    cobaLogin = (email, password) => {
+        try {
+             auth()
+             .signInWithEmailAndPassword(email, password)
+             .then(res => {
+                 console.log(res.user.email);
+          });
+    } catch (error) {
+          console.log(error.toString(error));
+        }
+      };
+
     render() {
         return(
             <SafeAreaView style={styles.container1}>
@@ -14,19 +37,24 @@ export default class LoginScreen extends React.Component{
 
                     <TextInput
                     style={styles.input}
-                    placeholder= "ex: 089809878989"
+                    placeholder= "ex: example@mail.com"
                     underlineColorAndroid='transparent'
+                    value= {this.state.email}
+                    onChangeText= {(text) => {this.setState({email:text})}}
                     />
 
                     <Text style={styles.tulisan3}>Password</Text>
 
                     <TextInput
                     style={styles.input1}
-                    placeholder= "ex: 089809878989"
+                    placeholder= "****"
+                    secureTextEntry={true}
+                    value= {this.state.password}
+                    onChangeText= {(text) => {this.setState({password:text})}}
                     underlineColorAndroid='transparent'
                     />
 
-                <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Home')}}>
+                <TouchableOpacity style={styles.btn} onPress={() => this.cobaLogin(this.state.email, this.state.password)}>
                     <Text style={styles.text1}>Login</Text>
                 </TouchableOpacity>
 

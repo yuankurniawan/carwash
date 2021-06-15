@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Button, ScrollView } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import Icon3 from 'react-native-vector-icons/FontAwesome'
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import { CheckBox } from 'react-native-elements';
@@ -14,6 +15,12 @@ export default class Profile extends React.Component {
         this.state = {
             count: 0,
         }
+    }
+
+    cobaSignout = () => {
+        auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
     }
 
     render() {
@@ -40,7 +47,8 @@ export default class Profile extends React.Component {
                         </View>
                     </View>
                     <View>
-                    <Button 
+                    <Button
+                        onPress={() => this.cobaSignout()} 
                         title="Log Out"
                         color="#FF0000"
                     />

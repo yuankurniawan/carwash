@@ -1,9 +1,37 @@
 import React from 'react';
 import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 
+import auth from '@react-native-firebase/auth';
 const { width: WIDTH } = Dimensions.get('window')
 
 export default class RegisScreen extends React.Component{
+
+    constructor (props) {
+        super(props)
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+
+    cobaRegis = (email, password) => {
+        auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+            console.log('User account created & signed in!');
+        })
+        .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+        });  
+    }
     render() {
         return(
             <SafeAreaView style={[styles.container]}>
@@ -14,11 +42,24 @@ export default class RegisScreen extends React.Component{
 
                         <TextInput
                         style={styles.input}
-                        placeholder= "ex: carwash@gmail.com"
+                        placeholder= "ex: carwash@mail.com"
+                        underlineColorAndroid='transparent'
+                        value={this.state.email}
+                        onChangeText={(text) => {this.setState({email:text})}}
+                        />
+
+                        <Text style={styles.tulisan3}>Password</Text>
+
+                        <TextInput
+                        style={styles.input}
+                        placeholder= "******"
+                        secureTextEntry={true}
+                        value={this.state.password}
+                        onChangeText={(text) => {this.setState({password:text})}}
                         underlineColorAndroid='transparent'
                         />
 
-                    <TouchableOpacity style={styles.btn} onPress={() => {this.props.navigation.navigate('Otp')}}>
+                    <TouchableOpacity style={styles.btn} onPress={() => this.cobaRegis(this.state.email, this.state.password)}>
                         <Text style={styles.text1}>Selanjutnya</Text>
                     </TouchableOpacity>
                     <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
@@ -96,5 +137,13 @@ const styles = StyleSheet.create({
         top: 360,
         fontWeight: "bold",
         color: '#00A7E1',
+    },
+    tulisan3: {
+        marginVertical: 10,
+        fontWeight: "bold",
+        textAlign: "left",
+        fontSize: 20,
+        top: 240,
+        right: 120,
     },
 })
