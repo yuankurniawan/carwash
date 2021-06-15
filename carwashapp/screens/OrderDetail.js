@@ -23,6 +23,14 @@ export default class OrderDetail extends React.Component {
   componentDidMount() {
     Geolocation.getCurrentPosition(info => console.log(info));
   }
+  sum($add,$val){
+    if($add == true){
+      this.setState({totalPrice:this.state.totalPrice + $val})
+    }
+    else{
+      this.setState({totalPrice:this.state.totalPrice - $val})
+    }
+  }
 
   render() {
     return (
@@ -50,16 +58,16 @@ export default class OrderDetail extends React.Component {
             </View>
           </View>
           <View>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold',  marginTop: 10}}>
               Tipe layanan
             </Text>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: '#cc', borderBottomWidth: 0.5 }}>
               <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     disabled={false}
                     value={this.state.toggleExpress}
-                    onValueChange={(newValue) => this.setState({ toggleExpress: newValue })}
+                    onValueChange={() => {this.sum(!this.state.toggleExpress,10000);this.setState({ toggleExpress:!this.state.toggleExpress})}}
                   />
                   <Text>Express</Text>
                 </View>
@@ -70,7 +78,7 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.toggleReguler}
-                    onValueChange={(newValue) => this.setState({ toggleReguler: newValue })}
+                    onValueChange={() => {this.sum(!this.state.toggleReguler,0);this.setState({toggleReguler:!this.state.toggleReguler})}}
                   />
                   <Text>Regular</Text>
                 </View>
@@ -79,13 +87,13 @@ export default class OrderDetail extends React.Component {
             </View>
           </View>
           <View>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 10 }}>
               Set Waktu
           </Text>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', borderBottomColor: '#cc', borderBottomWidth: 0.5 }}>
               <View style={{ margin: 10 }}>
                 <Button
-                  title="Kirim"
+                  title="PILIH"
                   color="#00A7E1" />
               </View>
               <View style={{ margin: 10, width: 200, height: 33, backgroundColor: 'gray', borderRadius: 10 }}>
@@ -93,7 +101,7 @@ export default class OrderDetail extends React.Component {
             </View>
           </View>
           <View>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold',  marginTop: 10 }}>
               Tambahan
           </Text>
             <View style={{ borderBottomColor: '#cc', borderBottomWidth: 0.5 }}>
@@ -102,7 +110,7 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.toggleCuci}
-                    onValueChange={(newValue) => this.setState({ toggleCuci: newValue })}
+                    onValueChange={() => {this.sum(!this.state.toggleCuci,10000);this.setState({toggleCuci:!this.state.toggleCuci})}}
                   />
                   <Text>Cuci Mesin</Text>
                 </View>
@@ -114,7 +122,7 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.toggleSemir}
-                    onValueChange={(newValue) => this.setState({ toggleSemir: newValue })}
+                    onValueChange={() => {this.sum(!this.state.toggleSemir,10000);this.setState({toggleSemir:!this.state.toggleSemir})}}
                   />
                   <Text>Semir Ban</Text>
                 </View>
@@ -126,7 +134,7 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.togglePoles}
-                    onValueChange={(newValue) => this.setState({ togglePoles: newValue })}
+                    onValueChange={() => {this.sum(!this.state.togglePoles,10000);this.setState({togglePoles:!this.state.togglePoles})}}
                   />
                   <Text>Poles</Text>
                 </View>
@@ -142,7 +150,7 @@ export default class OrderDetail extends React.Component {
               {this.props.route.params.description}
             </Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'green' }}>
-              Rp {this.props.route.params.price},00
+              Rp {this.props.route.params.price}
           </Text>
             <Text>
               {this.props.route.params.location}
@@ -153,7 +161,7 @@ export default class OrderDetail extends React.Component {
               Total
           </Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'green' }}>
-              {this.state.totalPrice}
+              Rp {this.state.totalPrice}
           </Text>
           </View>
           <View style={{ marginTop: 10 }}>
