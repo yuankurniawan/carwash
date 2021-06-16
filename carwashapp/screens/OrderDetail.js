@@ -146,11 +146,11 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.toggleCuci}
-                    onValueChange={() => {this.sum(!this.state.toggleCuci,10000);this.setState({toggleCuci:!this.state.toggleCuci})}}
+                    onValueChange={() => {this.sum(!this.state.toggleCuci,30000);this.setState({toggleCuci:!this.state.toggleCuci})}}
                   />
                   <Text>Cuci Mesin</Text>
                 </View>
-                <Text>Rp 10000</Text>
+                <Text>Rp 30000</Text>
               </View>
 
               <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -158,11 +158,11 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.toggleSemir}
-                    onValueChange={() => {this.sum(!this.state.toggleSemir,10000);this.setState({toggleSemir:!this.state.toggleSemir})}}
+                    onValueChange={() => {this.sum(!this.state.toggleSemir,25000);this.setState({toggleSemir:!this.state.toggleSemir})}}
                   />
                   <Text>Semir Ban</Text>
                 </View>
-                <Text>Rp 10000</Text>
+                <Text>Rp 25000</Text>
               </View>
 
               <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -170,11 +170,11 @@ export default class OrderDetail extends React.Component {
                   <CheckBox
                     disabled={false}
                     value={this.state.togglePoles}
-                    onValueChange={() => {this.sum(!this.state.togglePoles,10000);this.setState({togglePoles:!this.state.togglePoles})}}
+                    onValueChange={() => {this.sum(!this.state.togglePoles,30000);this.setState({togglePoles:!this.state.togglePoles})}}
                   />
                   <Text>Poles</Text>
                 </View>
-                <Text>Rp 10000</Text>
+                <Text>Rp 30000</Text>
               </View>
             </View>
           </View>

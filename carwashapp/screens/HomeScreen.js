@@ -48,8 +48,6 @@ export default class HomeScreen extends React.Component {
             info => {
                 const { coords } = info
                 this.setState({latitude:coords.latitude, longitude:coords.longitude})
-                console.log(info)
-    
             },
             error => console.log(error),
             {
@@ -127,7 +125,6 @@ export default class HomeScreen extends React.Component {
                 </MapView>
                 
                 <View style={{ width: '100%', height: '30%', backgroundColor: 'white', padding: 10 }}>
-                    {/* style nanti diperbaiki */}
                     <FlatList
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
@@ -155,8 +152,7 @@ export default class HomeScreen extends React.Component {
                             description: this.state.Description,
                             price: this.state.Price
                         })}
-                        /* disabled belum fungional 100% */
-                        disabled={!this.state.Data && !this.state.itemSelected ? true:false}
+                        disabled={!this.state.Data || !this.state.itemSelected ? true:false}
                     />
                 </View>
             </SafeAreaView>
@@ -179,7 +175,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 5, 
         marginTop: 20, 
         borderRadius: 10, 
-        borderWidth: 1, 
+        elevation: 5,
         padding: 10
     },
 })
