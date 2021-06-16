@@ -38,6 +38,14 @@ export default class RegisScreen extends React.Component{
                 <View style={styles.container1}>
                     <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
                         <Text style={styles.text}>Daftar</Text>
+
+                        <Text style={styles.tulisan}>Nama</Text>
+
+                        <TextInput
+                        style={styles.input1}
+                        placeholder= "Car Wash"
+                        underlineColorAndroid='transparent'
+                        />
                         <Text style={styles.tulisan}>Email</Text>
 
                         <TextInput
@@ -51,7 +59,7 @@ export default class RegisScreen extends React.Component{
                         <Text style={styles.tulisan3}>Password</Text>
 
                         <TextInput
-                        style={styles.input}
+                        style={styles.input2}
                         placeholder= "******"
                         secureTextEntry={true}
                         value={this.state.password}
@@ -60,7 +68,7 @@ export default class RegisScreen extends React.Component{
                         />
 
                     <TouchableOpacity style={styles.btn} onPress={() => this.cobaRegis(this.state.email, this.state.password)}>
-                        <Text style={styles.text1}>Selanjutnya</Text>
+                        <Text style={styles.text1}>Daftar</Text>
                     </TouchableOpacity>
                     <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
                     <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('Login')}}>Login</Text>
@@ -80,6 +88,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         backgroundColor: '#FFFFFF',
+        marginTop: -70,
     },
     image: {
         flex: 1,
@@ -104,6 +113,32 @@ const styles = StyleSheet.create({
         backgroundColor: '#C6C2C6',
         opacity: 0.5,
     },
+    input1: {
+        width: WIDTH-80,
+        height: 50,
+        borderRadius : 5,
+        padding: 16,
+        top: 240,
+        borderColor : '#ccc',
+        marginHorizontal: 10,
+        backgroundColor: '#C6C2C6',
+        opacity: 0.5,
+        marginBottom: 30,
+    },
+    input2: {
+        width: WIDTH-80,
+        height: 50,
+        borderRadius : 5,
+        padding: 16,
+        top: 240,
+        borderColor : '#ccc',
+        marginHorizontal: 10,
+        backgroundColor: '#C6C2C6',
+        opacity: 0.5,
+        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: -20
+    },
     tulisan: {
         fontWeight: "bold",
         textAlign: "left",
@@ -118,7 +153,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#00A7E1',
         alignItems: 'center',
-        top: 350,
+        top: 280,
     },
     text1:{
         color: '#FFFFFF',
@@ -129,12 +164,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 14,
         marginTop: 10,
-        top: 360,
+        top: 290,
     },
     tulisan2: {
         fontFamily: 'Roboto',
         fontSize: 14,
-        top: 360,
+        top: 290,
         fontWeight: "bold",
         color: '#00A7E1',
     },
