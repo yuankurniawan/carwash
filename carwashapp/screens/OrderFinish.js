@@ -11,7 +11,7 @@ export default class OrderFinish extends React.Component {
       <ScrollView style={{flex: 1}}>
         <View style={{alignItems: 'center', marginTop: 50}}>
           {profile}
-          <Text style={{fontSize: 30}}>Herman</Text>
+          <Text style={{fontSize: 30}}>{this.props.route.params.P3}</Text>
           <AirbnbRating />
         </View>
         <View style={{paddingHorizontal: 70}}>

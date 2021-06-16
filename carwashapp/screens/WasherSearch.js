@@ -1,17 +1,60 @@
-import React, { Component } from 'react';
-import { SafeAreaView, Text, View, StyleSheet } from 'react-native';
+import React, { Component, useState, useEffect } from 'react';
+import { SafeAreaView, Text, View, StyleSheet, Button } from 'react-native';
 import MapView from 'react-native-maps';
 
 export default class WasherSearch extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: [],
+            isLoading: true
+        };
+    }
+    
+
     componentDidMount(){
+        this.RandomNumber = Math.floor(Math.random() * 3) + 0 ;
+        fetch('http://18.118.154.146:8000/washer/')
+
+            .then((response) => response.json())
+            .then((json) => {
+                this.setState({ data: json });
+                
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+                this.setState({ isLoading: false });
+            });
+
+        
+
         setTimeout(() => {
             this.props.navigation.replace('WasherOnGoing', {
                 latitude: this.props.route.params.latitude,
-                longitude: this.props.route.params.longitude
+                longitude: this.props.route.params.longitude,
+                P1: this.nyobaindah()
               });
         }, 3000)
     }
 
+    
+
+    nyobaindah(){
+        const { data, isLoading } = this.state;
+
+        let tes = data;
+        let nama_akhir = ""
+
+        if (tes.length == 0){
+        }else{
+            nama_akhir = tes[this.RandomNumber].name
+        }
+
+        return nama_akhir
+    }
+
+    
     render() {
         return(
             <View style={styles.root}>

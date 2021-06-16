@@ -8,8 +8,9 @@ export default class WasherArrive extends React.Component {e
         setTimeout(() => {
             this.props.navigation.replace('OrderFinish', {
                 latitude: this.props.route.params.latitude,
-                longitude: this.props.route.params.longitude
-              });
+                longitude: this.props.route.params.longitude,
+                P3: this.props.route.params.P2
+            });
         }, 3000)
     }
     
@@ -26,7 +27,7 @@ export default class WasherArrive extends React.Component {e
             />
             <ScrollView style={styles.base}>
                 <Text style={[styles.text,{fontSize: 10, marginTop: 20}]}>Washer Telah Tiba!</Text>
-                <Text style={[styles.text,{fontSize: 20}]}>HERMAN</Text>
+                <Text style={[styles.text,{fontSize: 20}]}>{this.props.route.params.P2}</Text>
                 <View style={styles.line}></View>
                 <View style={styles.chatButton}>
                 <Button 

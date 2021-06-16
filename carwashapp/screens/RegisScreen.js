@@ -1,6 +1,7 @@
 import React from 'react';
-import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput, ScrollView} from 'react-native';
+
 import auth from '@react-native-firebase/auth';
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -35,47 +36,39 @@ export default class RegisScreen extends React.Component{
     render() {
         return(
             <SafeAreaView style={[styles.container]}>
-                <View style={styles.container1}>
-                    <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
-                        <Text style={styles.text}>Daftar</Text>
+                <ScrollView>
+                    <View style={styles.container1}>
+                        <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
+                            <Text style={styles.text}>Daftar</Text>
+                            <Text style={styles.tulisan}>Email</Text>
 
-                        <Text style={styles.tulisan}>Nama</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="ex: carwash@mail.com"
+                                underlineColorAndroid='transparent'
+                                value={this.state.email}
+                                onChangeText={(text) => { this.setState({ email: text }) }}
+                            />
 
-                        <TextInput
-                        style={styles.input1}
-                        placeholder= "Car Wash"
-                        underlineColorAndroid='transparent'
-                        value={this.state.username}
-                        onChangeText={(text) => {this.setState({username:text})}}
-                        />
-                        <Text style={styles.tulisan}>Email</Text>
+                            <Text style={styles.tulisan3}>Password</Text>
 
-                        <TextInput
-                        style={styles.input}
-                        placeholder= "ex: carwash@mail.com"
-                        underlineColorAndroid='transparent'
-                        value={this.state.email}
-                        onChangeText={(text) => {this.setState({email:text})}}
-                        />
+                            <TextInput
+                                style={styles.input}
+                                placeholder="******"
+                                secureTextEntry={true}
+                                value={this.state.password}
+                                onChangeText={(text) => { this.setState({ password: text }) }}
+                                underlineColorAndroid='transparent'
+                            />
 
-                        <Text style={styles.tulisan3}>Password</Text>
-
-                        <TextInput
-                        style={styles.input2}
-                        placeholder= "******"
-                        secureTextEntry={true}
-                        value={this.state.password}
-                        onChangeText={(text) => {this.setState({password:text})}}
-                        underlineColorAndroid='transparent'
-                        />
-
-                    <TouchableOpacity style={styles.btn} onPress={() => this.cobaRegis(this.state.email, this.state.password)}>
-                        <Text style={styles.text1}>Daftar</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
-                    <Text style={styles.tulisan2}onPress={() => {this.props.navigation.navigate('Login')}}>Login</Text>
-                    </ImageBackground>
-                </View>
+                            <TouchableOpacity style={styles.btn} onPress={() => this.cobaRegis(this.state.email, this.state.password)}>
+                                <Text style={styles.text1}>Selanjutnya</Text>
+                            </TouchableOpacity>
+                            <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
+                            <Text style={styles.tulisan2} onPress={() => { this.props.navigation.navigate('Login') }}>Login</Text>
+                        </ImageBackground>
+                    </View>
+                </ScrollView>
             </SafeAreaView>
         )
     };

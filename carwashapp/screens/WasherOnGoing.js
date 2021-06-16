@@ -8,12 +8,14 @@ export default class WasherOnGoing extends React.Component {
         setTimeout(() => {
             this.props.navigation.replace('WasherArrive', {
                 latitude: this.props.route.params.latitude,
-                longitude: this.props.route.params.longitude
-              });
+                longitude: this.props.route.params.longitude,
+                P2: this.props.route.params.P1
+            });
         }, 3000)
     }
 
     render() {
+
         return(
             <View style={styles.root}>
             <MapView style={styles.container}
@@ -26,7 +28,7 @@ export default class WasherOnGoing extends React.Component {
             />
             <ScrollView style={styles.base}>
                 <Text style={[styles.text,{fontSize: 10, marginTop: 20}]}>Washer Meluncur</Text>
-                <Text style={[styles.text,{fontSize: 20}]}>HERMAN</Text>
+                <Text style={[styles.text,{fontSize: 20}]}>{this.props.route.params.P1}</Text>
                 <View style={styles.line}></View>
                 <View style={styles.chatButton}>
                 <Button 
