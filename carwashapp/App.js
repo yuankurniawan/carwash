@@ -54,13 +54,9 @@ export default function App() {
         { user ? 
         
         <>
-        <Stack.Screen name="WasherSearch" component={WasherSearch} options={{
-          headerShown: false,
-        }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{
           headerShown: false,
         }} />
-        
         <Stack.Screen name="Profile" component={Profile} options={{
           headerShown: true,
         }} />
@@ -74,6 +70,9 @@ export default function App() {
           headerShown: false,
         }} />
         <Stack.Screen name="WasherOnGoing" component={WasherOnGoing} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name="WasherSearch" component={WasherSearch} options={{
           headerShown: false,
         }} />
         <Stack.Screen name="WasherArrive" component={WasherArrive} options={{

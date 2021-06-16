@@ -16,9 +16,9 @@ export default class OrderFinish extends React.Component {
         </View>
         <View style={{paddingHorizontal: 70}}>
           <Text style={{marginTop: 20, fontWeight: 'bold', fontSize: 20}}>
-            Paket A
+            {this.props.route.params.paket_nama}
           </Text>
-          <Text style={{fontSize: 12, color: 'grey'}}>Cuci Luar</Text>
+          <Text style={{fontSize: 12, color: 'grey'}}>{this.props.route.params.paket_deskripsi}</Text>
           <Text
             style={{
               fontSize: 20,
@@ -26,11 +26,10 @@ export default class OrderFinish extends React.Component {
               marginTop: 8,
               fontWeight: 'bold',
             }}>
-            Rp. 40.000,00
+            Rp. {this.props.route.params.total_harga}
           </Text>
           <Text style={{fontSize: 12, color: 'black', marginTop: 8, marginBottom: 80}}>
-            BSD City Kavling Edutown I.1, Jl. BSD Raya Utama, BSD City, Kec.
-            Pagedangan, Tangerang, Banten 15339
+          {this.props.route.params.lokasi}
           </Text>
           <Button 
             title="Kirim"

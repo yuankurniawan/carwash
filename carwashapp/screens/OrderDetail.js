@@ -206,7 +206,11 @@ export default class OrderDetail extends React.Component {
               color="#00A7E1"
               onPress={() => this.props.navigation.navigate('WasherSearch', {
                 latitude: this.props.route.params.latitude,
-                longitude: this.props.route.params.longitude
+                longitude: this.props.route.params.longitude,
+                paket_nama: this.props.route.params.name,
+                paket_deskripsi: this.props.route.params.description,
+                total_harga: this.state.totalPrice,
+                lokasi: this.props.route.params.location
               })}
             />
           </View>

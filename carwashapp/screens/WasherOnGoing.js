@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Button } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class WasherOnGoing extends React.Component {
@@ -9,7 +9,11 @@ export default class WasherOnGoing extends React.Component {
             this.props.navigation.replace('WasherArrive', {
                 latitude: this.props.route.params.latitude,
                 longitude: this.props.route.params.longitude,
-                P2: this.props.route.params.P1
+                P2: this.props.route.params.P1,
+                paket_nama: this.props.route.params.paket_nama,
+                paket_deskripsi: this.props.route.params.paket_deskripsi,
+                total_harga: this.props.route.params.total_harga,
+                lokasi: this.props.route.params.lokasi
             });
         }, 3000)
     }
@@ -25,7 +29,9 @@ export default class WasherOnGoing extends React.Component {
                 latitudeDelta: 0.007,
                 longitudeDelta: 0.007,
                 }}
-            />
+            >
+                <Marker coordinate={{ latitude : this.props.route.params.latitude , longitude : this.props.route.params.longitude }} />
+            </MapView>
             <ScrollView style={styles.base}>
                 <Text style={[styles.text,{fontSize: 10, marginTop: 20}]}>Washer Meluncur</Text>
                 <Text style={[styles.text,{fontSize: 20}]}>{this.props.route.params.P1}</Text>
@@ -36,10 +42,10 @@ export default class WasherOnGoing extends React.Component {
                     onPress={() => Alert.alert('Simple Button pressed')}
                 />
                 </View>
-                <Text style={[styles.text,{fontSize: 20, marginTop: 20}]}>PAKET A</Text>
-                <Text style={[styles.text,{fontSize: 10}]}>Cuci Luar</Text>
-                <Text style={[styles.text,{fontSize: 20, marginTop: 6, color:'#2DD881'}]}>Rp. 40.000,00</Text>
-                <Text style={[styles.caption,{fontSize: 10, marginTop: 6}]}>BSD City Kavling Edutown I.1, Jl. BSD Raya Utama, BSD City, Kec. Pagedangan, Tangerang, Banten 15339</Text>
+                <Text style={[styles.text,{fontSize: 20, marginTop: 20}]}>{this.props.route.params.paket_nama}</Text>
+                <Text style={[styles.text,{fontSize: 10}]}>{this.props.route.params.paket_deskripsi}</Text>
+                <Text style={[styles.text,{fontSize: 20, marginTop: 6, color:'#2DD881'}]}>Rp. {this.props.route.params.total_harga}</Text>
+                <Text style={[styles.caption,{fontSize: 10, marginTop: 6}]}>{this.props.route.params.lokasi}</Text>
             </ScrollView>
             </View>
         )
