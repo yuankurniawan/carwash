@@ -3,6 +3,7 @@ import { SafeAreaView, Text, View, StyleSheet, Button, ScrollView } from 'react-
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import CheckBox from '@react-native-community/checkbox';
 import Geolocation from '@react-native-community/geolocation';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const profile = <Icon2 name='ios-person-circle-outline' size={70} color='#00A7E1'></Icon2>
 
@@ -11,6 +12,10 @@ export default class OrderDetail extends React.Component {
     super(props);
     this.state = {
       count: 0,
+      date: new Date(),
+      time: new Date(), //tambah ini
+      mode: 'date',
+      show: false,
       toggleExpress: false,
       toggleReguler: false,
       toggleCuci: false,
@@ -19,6 +24,21 @@ export default class OrderDetail extends React.Component {
       totalPrice: this.props.route.params.price
     }
   }
+
+  onChange = (event, selectedValue) => { //onchange ganti jadi yg ini, buat time
+    const selectedTime = selectedValue || time;
+    this.setState({ time: selectedTime })
+    this.setState({ show: Platform.OS === 'ios' }) 
+  };
+
+  showMode = (currentMode) => {
+    this.setState({ show: true})
+    this.setState({ mode: currentMode })
+  };
+
+  showTimepicker = () => {
+    this.showMode('time');
+  };
 
   componentDidMount() {
     Geolocation.getCurrentPosition(info => console.log(info));
@@ -89,15 +109,31 @@ export default class OrderDetail extends React.Component {
           <View>
             <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 10 }}>
               Set Waktu
-          </Text>
+            </Text>
             <View style={{ flexDirection: 'row', borderBottomColor: '#cc', borderBottomWidth: 0.5 }}>
               <View style={{ margin: 10 }}>
                 <Button
                   title="PILIH"
-                  color="#00A7E1" />
+                  color="#00A7E1"
+                  onPress={this.showTimepicker}
+                />
               </View>
-              <View style={{ margin: 10, width: 200, height: 33, backgroundColor: 'gray', borderRadius: 10 }}>
+
+              <View style={{ margin: 10, width: 100, height: 33, backgroundColor: 'grey', borderRadius: 10 }}>
+                {/* ini buat format time nya */}
+                <Text style={{marginLeft: 20, fontSize: 20, color: 'white',fontWeight: 'bold',  marginTop: 3 }}>{this.state.time.getHours()<10?'0':''}{this.state.time.getHours()}:{this.state.time.getMinutes()<10?'0':''}{this.state.time.getMinutes()}</Text>
               </View>
+
+              {this.state.show && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={this.state.date}
+                  mode={this.state.mode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={this.onChange}
+                />
+              )}
             </View>
           </View>
           <View>
