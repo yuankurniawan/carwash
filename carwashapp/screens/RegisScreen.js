@@ -1,22 +1,22 @@
 import React from 'react';
 import {SafeAreaView, View, Image, Text, Dimensions, StyleSheet, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
-
+import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+
 const { width: WIDTH } = Dimensions.get('window')
 
 export default class RegisScreen extends React.Component{
-
     constructor (props) {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            username: '',
         }
     }
 
-    cobaRegis = (email, password) => {
-        auth()
-        .createUserWithEmailAndPassword(email, password)
+    cobaRegis = async(email, password) => {
+        const result = await auth().createUserWithEmailAndPassword(email, password)
         .then(() => {
             console.log('User account created & signed in!');
         })
@@ -30,7 +30,7 @@ export default class RegisScreen extends React.Component{
         }
 
         console.error(error);
-        });  
+        });
     }
     render() {
         return(
@@ -45,6 +45,8 @@ export default class RegisScreen extends React.Component{
                         style={styles.input1}
                         placeholder= "Car Wash"
                         underlineColorAndroid='transparent'
+                        value={this.state.username}
+                        onChangeText={(text) => {this.setState({username:text})}}
                         />
                         <Text style={styles.tulisan}>Email</Text>
 

@@ -204,7 +204,10 @@ export default class OrderDetail extends React.Component {
             <Button
               title="Kirim"
               color="#00A7E1"
-              accessibilityLabel="Learn more about this purple button"
+              onPress={() => this.props.navigation.navigate('WasherSearch', {
+                latitude: this.props.route.params.latitude,
+                longitude: this.props.route.params.longitude
+              })}
             />
           </View>
         </View>

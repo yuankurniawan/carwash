@@ -6,7 +6,10 @@ import { ScrollView } from 'react-native-gesture-handler';
 export default class WasherOnGoing extends React.Component {
     componentDidMount(){
         setTimeout(() => {
-            this.props.navigation.replace('WasherArrive');
+            this.props.navigation.replace('WasherArrive', {
+                latitude: this.props.route.params.latitude,
+                longitude: this.props.route.params.longitude
+              });
         }, 3000)
     }
 
@@ -15,10 +18,10 @@ export default class WasherOnGoing extends React.Component {
             <View style={styles.root}>
             <MapView style={styles.container}
                 initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+                latitude: this.props.route.params.latitude,
+                longitude: this.props.route.params.longitude,
+                latitudeDelta: 0.007,
+                longitudeDelta: 0.007,
                 }}
             />
             <ScrollView style={styles.base}>

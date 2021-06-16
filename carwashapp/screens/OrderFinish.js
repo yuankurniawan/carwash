@@ -35,7 +35,7 @@ export default class OrderFinish extends React.Component {
           <Button 
             title="Kirim"
             color="#00A7E1"
-            accessibilityLabel="Learn more about this purple button"
+            onPress={() => this.props.navigation.navigate('Home')}
           />
         </View>
       </ScrollView>

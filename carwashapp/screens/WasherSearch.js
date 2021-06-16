@@ -5,7 +5,10 @@ import MapView from 'react-native-maps';
 export default class WasherSearch extends React.Component {
     componentDidMount(){
         setTimeout(() => {
-            this.props.navigation.replace('WasherOnGoing');
+            this.props.navigation.replace('WasherOnGoing', {
+                latitude: this.props.route.params.latitude,
+                longitude: this.props.route.params.longitude
+              });
         }, 3000)
     }
 
@@ -14,10 +17,10 @@ export default class WasherSearch extends React.Component {
             <View style={styles.root}>
             <MapView style={styles.container}
                 initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+                latitude: this.props.route.params.latitude,
+                longitude: this.props.route.params.longitude,
+                latitudeDelta: 0.007,
+                longitudeDelta: 0.007,
                 }}
             />
             <View style={styles.base}>

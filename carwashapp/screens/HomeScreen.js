@@ -154,7 +154,9 @@ export default class HomeScreen extends React.Component {
                             location: this.state.Data,
                             name: this.state.Name,
                             description: this.state.Description,
-                            price: this.state.Price
+                            price: this.state.Price,
+                            latitude: this.state.latitude,
+                            longitude: this.state.longitude
                         })}
                         disabled={!this.state.Data || !this.state.itemSelected ? true:false}
                     />
