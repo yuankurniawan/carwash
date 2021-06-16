@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, FlatList, Pressable, Button, PermissionsAndroid } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, FlatList, Pressable, Button, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -138,7 +138,11 @@ export default class HomeScreen extends React.Component {
                                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: this.state.itemSelected === item.id ? 'white':'black' }}>{item.name}</Text>
                                     <Text style={{ fontSize: 14, fontWeight: 'bold', color: this.state.itemSelected === item.id ? 'white':'#C6C2C6' }}>{item.description}</Text>
                                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#25CF92' }}>Rp. {item.price},00</Text>
-                                </View> 
+                                </View>
+                                <View style={{ height: '100%', justifyContent: 'center' }}>
+                                    <Image source={this.state.itemSelected === item.id ? require('../images/money-white.png'):require('../images/money-blue.png')} style={{ height: 45, width: 45 }}/>
+                                </View>
+                                
                             </View>
                         </Pressable>
                         )}
