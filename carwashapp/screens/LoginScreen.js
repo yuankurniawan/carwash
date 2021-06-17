@@ -21,7 +21,7 @@ export default class LoginScreen extends React.Component{
              auth()
              .signInWithEmailAndPassword(email, password)
              .then(res => {
-                 console.log(res.user.email);
+                this.props.navigation.navigate('Home')
           });
     } catch (error) {
           console.log(error.toString(error));

@@ -1,11 +1,15 @@
-import { RevealFromBottomAndroid } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import React from 'react';
 import {View, Image, Text, Dimensions, StyleSheet} from 'react-native';
 
 
-const SplashScreen = ({navigation}) => {
+const SplashScreen = ({navigation, user}) => {
     setTimeout(() => {
-        navigation.replace('Boarding1');
+        if(user == null) {
+            navigation.replace('Boarding1');
+        }
+        else {
+            navigation.replace('Home');
+        }   
     }, 3000)
     return (
         <View

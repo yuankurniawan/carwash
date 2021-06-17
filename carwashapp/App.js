@@ -51,8 +51,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        { user ? 
-        
+        { user ?        
         <>
         <Stack.Screen name="Home" component={HomeScreen} options={{
           headerShown: false,
@@ -84,9 +83,11 @@ export default function App() {
         }} />
         </> : 
         <>
-        <Stack.Screen name="Splash" component={SplashScreen} options={{
+        <Stack.Screen name="Splash" options={{
           headerShown: false
-        }} />
+        }} >
+          { props => <SplashScreen {...props} user={user}/> }
+        </Stack.Screen>
         <Stack.Screen name="Boarding1" component={OnBoarding1} options={{
           headerShown: false
         }} />

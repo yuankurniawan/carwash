@@ -49,7 +49,7 @@ export default class Profile extends React.Component {
                     </View>
                     <View>
                     <Button
-                        onPress={() => cobaSignout()} 
+                        onPress={() => this.cobaSignout()} 
                         title="Log Out"
                         color="#FF0000"
                     />
