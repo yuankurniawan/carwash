@@ -18,57 +18,54 @@ export default class RegisScreen extends React.Component{
 
     cobaRegis = async(email, password) => {
         const result = await auth().createUserWithEmailAndPassword(email, password)
-        .then(() => {
-            console.log('User account created & signed in!');
+        firestore().collection('users').doc(result.user.uid).set({
+            name: this.state.username,
+            email: result.user.email,
+            uid: result.user.uid,
         })
-        .catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
-            console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-            console.log('That email address is invalid!');
-        }
-
-        console.error(error);
-        });
     }
     render() {
         return(
             <SafeAreaView style={[styles.container]}>
-                <ScrollView>
-                    <View style={styles.container1}>
-                        <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
-                            <Text style={styles.text}>Daftar</Text>
-                            <Text style={styles.tulisan}>Email</Text>
+                <View style={styles.container1}>
+                    <ImageBackground source={require('../images/LoginScreen.png')} style={styles.image}>
+                        <Text style={styles.text}>Daftar</Text>
 
-                            <TextInput
-                                style={styles.input}
-                                placeholder="ex: carwash@mail.com"
-                                underlineColorAndroid='transparent'
-                                value={this.state.email}
-                                onChangeText={(text) => { this.setState({ email: text }) }}
-                            />
+                        <Text style={styles.tulisan}>Nama</Text>
+                        <TextInput
+                        style={styles.input1}
+                        placeholder= "Car Wash"
+                        underlineColorAndroid='transparent'
+                        value={this.state.username}
+                        onChangeText={(text) => {this.setState({username:text})}}
+                        />
 
-                            <Text style={styles.tulisan3}>Password</Text>
+                        <Text style={styles.tulisan}>Email</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="ex: carwash@mail.com"
+                            underlineColorAndroid='transparent'
+                            value={this.state.email}
+                            onChangeText={(text) => { this.setState({ email: text }) }}
+                        />
 
-                            <TextInput
-                                style={styles.input}
-                                placeholder="******"
-                                secureTextEntry={true}
-                                value={this.state.password}
-                                onChangeText={(text) => { this.setState({ password: text }) }}
-                                underlineColorAndroid='transparent'
-                            />
+                        <Text style={styles.tulisan3}>Password</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="******"
+                            secureTextEntry={true}
+                            value={this.state.password}
+                            onChangeText={(text) => { this.setState({ password: text }) }}
+                            underlineColorAndroid='transparent'
+                        />
 
-                            <TouchableOpacity style={styles.btn} onPress={() => this.cobaRegis(this.state.email, this.state.password)}>
-                                <Text style={styles.text1}>Selanjutnya</Text>
-                            </TouchableOpacity>
-                            <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
-                            <Text style={styles.tulisan2} onPress={() => { this.props.navigation.navigate('Login') }}>Login</Text>
-                        </ImageBackground>
-                    </View>
-                </ScrollView>
+                        <TouchableOpacity style={styles.btn} onPress={() => this.cobaRegis(this.state.email, this.state.password)}>
+                            <Text style={styles.text1}>Selanjutnya</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.tulisan1}>Sudah memiliki akun? </Text>
+                        <Text style={styles.tulisan2} onPress={() => { this.props.navigation.navigate('Login') }}>Login</Text>
+                    </ImageBackground>
+                </View>
             </SafeAreaView>
         )
     };

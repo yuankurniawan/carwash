@@ -137,7 +137,7 @@ export default class HomeScreen extends React.Component {
                                 <View style={{ justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: this.state.itemSelected === item.id ? 'white':'black' }}>{item.name}</Text>
                                     <Text style={{ fontSize: 14, fontWeight: 'bold', color: this.state.itemSelected === item.id ? 'white':'#C6C2C6' }}>{item.description}</Text>
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#25CF92' }}>Rp. {item.price},00</Text>
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#25CF92' }}>Rp. {item.price}</Text>
                                 </View>
                                 <View style={{ height: '100%', justifyContent: 'center' }}>
                                     <Image source={this.state.itemSelected === item.id ? require('../images/money-white.png'):require('../images/money-blue.png')} style={{ height: 45, width: 45 }}/>

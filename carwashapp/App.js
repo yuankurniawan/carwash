@@ -57,9 +57,11 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{
           headerShown: false,
         }} />
-        <Stack.Screen name="Profile" component={Profile} options={{
+        <Stack.Screen name="Profile" options={{
           headerShown: true,
-        }} />
+        }} >
+          { props => <Profile {...props} user={user}/> }
+        </Stack.Screen>
         <Stack.Screen name="OrderDetail" component={OrderDetail} options={{
           headerShown: false,
         }} />
