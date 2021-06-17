@@ -95,7 +95,7 @@ export default class OrderDetail extends React.Component {
                 </View>
                 <Text>Rp 10000</Text>
               </View>
-              <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center', marginBottom:5 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     disabled={false}
@@ -113,7 +113,7 @@ export default class OrderDetail extends React.Component {
               Set Waktu
             </Text>
             <View style={{ flexDirection: 'row', borderBottomColor: '#cc', borderBottomWidth: 0.5 }}>
-              <View style={{ margin: 10 }}>
+              <View style={{ margin: 10, height:33 }}>
                 <Button
                   title="PILIH"
                   color="#00A7E1"
@@ -121,8 +121,8 @@ export default class OrderDetail extends React.Component {
                 />
               </View>
 
-              <View style={{ margin: 10, width: 100, height: 33, backgroundColor: 'grey', borderRadius: 10 }}>
-                <Text style={{marginLeft: 20, fontSize: 20, color: 'white',fontWeight: 'bold',  marginTop: 3 }}>{this.state.time.getHours()<10?'0':''}{this.state.time.getHours()}:{this.state.time.getMinutes()<10?'0':''}{this.state.time.getMinutes()}</Text>
+              <View style={{ margin: 10, width: 100, height: 33, backgroundColor: '#CDD0CB', borderRadius: 10 }}>
+                <Text style={{fontSize: 18, color: 'black',fontWeight: 'bold',  marginTop: 3, marginLeft:25}}>{this.state.time.getHours()<10?'0':''}{this.state.time.getHours()}:{this.state.time.getMinutes()<10?'0':''}{this.state.time.getMinutes()}</Text>
               </View>
 
               {this.state.show && (
@@ -166,7 +166,7 @@ export default class OrderDetail extends React.Component {
                 <Text>Rp 25000</Text>
               </View>
 
-              <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', width: '45%', justifyContent: 'space-between', alignItems: 'center', marginBottom:5 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     disabled={false}
@@ -183,13 +183,13 @@ export default class OrderDetail extends React.Component {
             <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 10 }}>
               {this.props.route.params.name}
             </Text>
-            <Text style={{ fontSize: 10, color: 'grey' }}>
+            <Text style={{ fontSize: 13, color: 'grey' }}>
               {this.props.route.params.description}
             </Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'green' }}>
               Rp {this.props.route.params.price}
           </Text>
-            <Text>
+            <Text style={{marginBottom: 10}}>
               {this.props.route.params.location}
             </Text>
           </View>
