@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Button, ScrollView } from 'react-native';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import CheckBox from '@react-native-community/checkbox';
-import Geolocation from '@react-native-community/geolocation';
+import firestore from '@react-native-firebase/firestore';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const profile = <Icon2 name='ios-person-circle-outline' size={70} color='#00A7E1'></Icon2>
@@ -13,7 +13,7 @@ export default class OrderDetail extends React.Component {
     this.state = {
       count: 0,
       date: new Date(),
-      time: new Date(), //tambah ini
+      time: new Date(), 
       mode: 'date',
       show: false,
       toggleExpress: false,
@@ -21,11 +21,19 @@ export default class OrderDetail extends React.Component {
       toggleCuci: false,
       toggleSemir: false,
       togglePoles: false,
-      totalPrice: this.props.route.params.price
+      totalPrice: this.props.route.params.price,
+      profile: ''
     }
   }
 
-  onChange = (event, selectedValue) => { //onchange ganti jadi yg ini, buat time
+
+  componentDidMount() {
+    firestore().collection('users').doc(this.props.user.uid).get().then(Snapshot => {
+      this.setState({ profile: Snapshot.data() })        
+    })
+  }
+
+  onChange = (event, selectedValue) => {
     const selectedTime = selectedValue || time;
     this.setState({ time: selectedTime })
     this.setState({ show: Platform.OS === 'ios' }) 
@@ -40,9 +48,6 @@ export default class OrderDetail extends React.Component {
     this.showMode('time');
   };
 
-  componentDidMount() {
-    Geolocation.getCurrentPosition(info => console.log(info));
-  }
   sum($add,$val){
     if($add == true){
       this.setState({totalPrice:this.state.totalPrice + $val})
@@ -65,15 +70,12 @@ export default class OrderDetail extends React.Component {
             <View>
               {profile}
             </View>
-            <View style={{ margin: 5 }}>
+            <View style={{ margin: 5, justifyContent: 'center' }}>
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                Ahmad
+                {this.state.profile.name}
               </Text>
               <Text>
-                082272717271
-              </Text>
-              <Text>
-                ahmad.ahmad@gmail.com
+                {this.state.profile.email}
               </Text>
             </View>
           </View>
@@ -120,7 +122,6 @@ export default class OrderDetail extends React.Component {
               </View>
 
               <View style={{ margin: 10, width: 100, height: 33, backgroundColor: 'grey', borderRadius: 10 }}>
-                {/* ini buat format time nya */}
                 <Text style={{marginLeft: 20, fontSize: 20, color: 'white',fontWeight: 'bold',  marginTop: 3 }}>{this.state.time.getHours()<10?'0':''}{this.state.time.getHours()}:{this.state.time.getMinutes()<10?'0':''}{this.state.time.getMinutes()}</Text>
               </View>
 

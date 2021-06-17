@@ -75,7 +75,6 @@ export default class HomeScreen extends React.Component {
                         }}
                         onPress={(data, details = null) => {
                             this.setState({ latitude: details.geometry.location.lat, longitude: details.geometry.location.lng, Data: data.description })
-                            console.log(this.state.Data);
                         }}
                         query={{
                             key: 'AIzaSyDQCRME4hDGSxdkyXM_cHD8bSdAVWym5ws',
